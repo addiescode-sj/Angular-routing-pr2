@@ -1,10 +1,24 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [];
+import { CrisisListComponent } from './crisis-list/crisis-list.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+
+const appRoutes: Routes = [
+  { path: 'crisis-center', component: CrisisListComponent },
+  { path: '', redirectTo: '/heroes', pathMatch: 'full' },
+  { path: '**', component: PageNotFoundComponent }
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [
+    RouterModule.forRoot(
+      appRoutes,
+      { enableTracing: true } // <-- 디버그 활성화
+    )
+  ],
+  exports: [
+    RouterModule
+  ]
 })
 export class AppRoutingModule { }
