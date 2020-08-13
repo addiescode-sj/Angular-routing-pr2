@@ -19,7 +19,8 @@ export class HeroListComponent implements OnInit {
 
   //heroes: Hero[];
 
-  constructor(private service: HeroService,
+  constructor(
+    private service: HeroService,
     private route: ActivatedRoute
   ) { }
 
@@ -27,7 +28,8 @@ export class HeroListComponent implements OnInit {
     // this.getHeroes();
     this.heroes$ = this.route.paramMap.pipe(
       switchMap(params => {
-        this.selectedId = +params.get('id');
+        //+는 string형으로 받은 id를 number로 변환시켜준다.
+        this.selectedId = Number(params.get('id'));
         return this.service.getHeroes();
       })
     );
