@@ -12,6 +12,7 @@ export class AuthService {
   redirectUrl: string;
 
   login(redirect = '/admin'): string {
+    this.isLoggedIn = true;
     // auth & premission check ...
     return redirect;
   }

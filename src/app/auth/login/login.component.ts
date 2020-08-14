@@ -20,23 +20,27 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.authService.getIsLoggedIn().subscribe((isLoggedIn = false) => {
-      this.isLoggedIn = isLoggedIn;
-    });
+    this.authService
+      .getIsLoggedIn()
+      .subscribe((isLoggedIn = false) => (this.isLoggedIn = isLoggedIn));
   }
 
   handleSubmit(event: Event) {
     event.preventDefault();
-
-    if (this.isLoggedIn) {
-      this.router.navigate([this.authService.login()]);
-    } else {
-      try {
+    try {
+      if (!this.isLoggedIn) {
+        this.isPending = true;
+        // pending 상태 체크를 위해 이벤트 루프 지연
+        setTimeout(() => {
+          const redirect = this.authService.login();
+          this.router.navigate([redirect]);
+          this.isPending = false;
+        }, 1000);
+      } else {
         this.authService.logout();
-        this.isLoggedIn = false;
-      } catch {
-        this.router.navigate(['404']);
       }
+    } catch {
+      this.router.navigate(['500']);
     }
   }
 }
