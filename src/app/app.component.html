@@ -9,8 +9,10 @@
     <a mat-tab-link [routerLink]="[{ outlets: { popup: ['compose'] } }]" selectedIndex="4">Contact</a>
   </nav>
 
+  <a mat-stroked-button [routerLink]="[{ outlets: { popup: ['compose'] } }]">Contact</a>
+
   <div [@routeAnimation]="getAnimationData(routerOutlet)">
     <router-outlet #routerOutlet="outlet"></router-outlet>
+    <router-outlet name="popup"></router-outlet>
   </div>
-  <router-outlet name="popup"></router-outlet>
 </section>
