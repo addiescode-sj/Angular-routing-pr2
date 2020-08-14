@@ -1,8 +1,7 @@
 <h2>LOGIN</h2>
-<p>{{message}}</p>
-<p>
-  <button mat-flat-button color="primary" (click)="login()" *ngIf="!authService.isLoggedIn">Login</button>
-  <button mat-flat-button color="primary" (click)="logout()" *ngIf="authService.isLoggedIn">Logout</button>
-  <!-- <button (click)="login()" *ngIf="!authService.isLoggedIn">Login</button>
-  <button (click)="logout()" *ngIf="authService.isLoggedIn">Logout</button> -->
-</p>
+<p>{{ getMessgae() }}</p>
+<form (submit)="handleSubmit($event)">
+  <button mat-flat-button color="primary" type="submit" *ngIf="!isLoggedIn">
+    {{ isLoggedIn ? "Logout" : "Login" }}
+  </button>
+</form>

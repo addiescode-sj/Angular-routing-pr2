@@ -1,41 +1,42 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent {
-  message: string;
+export class LoginComponent implements OnInit {
+  isLoggedIn = false;
+  isPending = false;
 
-  constructor(public authService: AuthService, public router: Router) {
-    this.setMessage();
+  constructor(public authService: AuthService, public router: Router) {}
+
+  getMessgae() {
+    return this.isPending
+      ? 'Trying to log in ...'
+      : `Logged ${this.isLoggedIn ? 'in' : 'out'}`;
   }
 
-  setMessage() {
-    this.message = 'Logged ' + (this.authService.isLoggedIn ? 'in' : 'out');
-  }
-
-  login() {
-    this.message = 'Trying to log in ...';
-
-    this.authService.login().subscribe(() => {
-      this.setMessage();
-      if (this.authService.isLoggedIn) {
-        // 보통은 AuthService에서 리다이렉트할 URL을 가져옵니다.
-        // 하지만 예제를 간단하게 구성하기 위해 `/admin`으로 리다이렉트 합시다.
-        const redirectUrl = '/admin';
-
-        // 최종 주소로 이동합니다.
-        this.router.navigate([redirectUrl]);
-      }
+  ngOnInit() {
+    this.authService.getIsLoggedIn().subscribe((isLoggedIn = false) => {
+      this.isLoggedIn = isLoggedIn;
     });
   }
 
-  logout() {
-    this.authService.logout();
-    this.setMessage();
+  handleSubmit(event: Event) {
+    event.preventDefault();
+
+    if (this.isLoggedIn) {
+      this.router.navigate([this.authService.login()]);
+    } else {
+      try {
+        this.authService.logout();
+        this.isLoggedIn = false;
+      } catch {
+        this.router.navigate(['404']);
+      }
+    }
   }
 }
