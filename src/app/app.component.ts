@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { slideInAnimation } from './animation';
 import { RouterOutlet } from '@angular/router';
-import { MatToolbarModule } from '@angular/material/toolbar';
 
 
 @Component({

@@ -1,25 +1,12 @@
 <h1 class="title">Angular Router</h1>
-<!-- <nav>
-  <a routerLink="/crisis-center" routerLinkActive="active">Crisis Center</a>
-  <a routerLink="/superheroes" routerLinkActive="active">Heroes</a>
-  <a routerLink="/admin" routerLinkActive="active">Admin</a>
-  <a routerLink="/login" routerLinkActive="active">Login</a>
-  <a [routerLink]="[{ outlets: { popup: ['compose'] } }]">Contact</a>
-</nav> -->
+
 <nav mat-tab-nav-bar>
-  <a mat-tab-link routerLink="/crisis-center" routerLinkActive="active">Crisis Center</a>
-  <a mat-tab-link routerLink="/superheroes" routerLinkActive="active">Heroes</a>
-  <a mat-tab-link routerLink="/admin" routerLinkActive="active">Admin</a>
-  <a mat-tab-link routerLink="/login" routerLinkActive="active">Login</a>
-  <a mat-tab-link [routerLink]="[{ outlets: { popup: ['compose'] } }]">Contact</a>
+  <a mat-tab-link routerLink="/crisis-center" routerLinkActive="active" selectedIndex="0">Crisis Center</a>
+  <a mat-tab-link routerLink="/superheroes" routerLinkActive="active" selectedIndex="1">Heroes</a>
+  <a mat-tab-link routerLink="/admin" routerLinkActive="active" selectedIndex="2">Admin</a>
+  <a mat-tab-link routerLink="/login" routerLinkActive="active" selectedIndex="3">Login</a>
+  <a mat-tab-link [routerLink]="[{ outlets: { popup: ['compose'] } }]" selectedIndex="4">Contact</a>
 </nav>
-<!-- <mat-tab-group mat-align-tabs="start">
-  <mat-tab label="Crisis Center" routerLink="/crisis-center" routerLinkActive="active"></mat-tab>
-  <mat-tab label="Heroes" routerLink="/superheroes" routerLinkActive="active"></mat-tab>
-  <mat-tab label="Admin" routerLink="/admin" routerLinkActive="active"></mat-tab>
-  <mat-tab label="Login" routerLink="/login" routerLinkActive="active"></mat-tab>
-  <mat-tab label="Contact" [routerLink]="[{ outlets: { popup: ['compose'] } }]"></mat-tab>
-</mat-tab-group> -->
 
 <div [@routeAnimation]="getAnimationData(routerOutlet)">
   <router-outlet #routerOutlet="outlet"></router-outlet>

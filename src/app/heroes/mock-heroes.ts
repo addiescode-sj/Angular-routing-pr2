@@ -1,21 +1,14 @@
 import { Hero } from './hero';
 
 export const HEROES: Hero[] = [
-  { id: 11, name: 'Dr Nice' },
-  { id: 12, name: 'Narco' },
-  { id: 13, name: 'Bombasto' },
-  { id: 14, name: 'Celeritas' },
-  { id: 15, name: 'Magneta' },
-  { id: 16, name: 'RubberMan' },
-  { id: 17, name: 'Dynama' },
-  { id: 18, name: 'Dr IQ' },
-  { id: 19, name: 'Magma' },
-  { id: 20, name: 'Tornado' }
+  { id: 11, name: 'Dr Nice', thumbImgUrl: "https://w.namu.la/s/d605ec5cae63e14c8abc084df60480467f564d13e31557bd4e969be29658df571b4fa07607596961ab848dc2d3a8311b3e639eba5912f6d2cedc8aae5cef5ded45520632b09a87652dc74a00bcebe7929263d843d821963b1d347f55f6da95f5972ac7e9214d4299f19903a54fe88d00" },
+  { id: 12, name: 'Narco', thumbImgUrl: "https://w.namu.la/s/f43544025cf844f4b362800f4470634e9a165ec65962176a08e50d7d967503293238b18866ab76040e86168843a4702fa3ca39fe89c5171169bf42e10f5a29b83b76ff4068ea0f426196f4e2258244cadfe6898d3e2dcd849cdbdbb98bcd70f79fde0446a71cfcae54e79d4e87b008d2" },
+  { id: 13, name: 'Bombasto', thumbImgUrl: "https://ww.namu.la/s/212f683a9f30bfd1355d39d773a2aca602674881e9dd582d9566a6fc5465642ba977c34e43eb44d6ccd75c39636358098c4460792d152b751c52f5a0a5858efd9dd0cd7338f91674adcbf109c769d7def6f43cc24a0e6619990cd5917b30a7c9cb2a60e17741393d37b673c74b7330eb" },
+  { id: 14, name: 'Celeritas', thumbImgUrl: "https://ww.namu.la/s/e6fc8193bfa7cc32fc20e799248e394358bae7c5130a2e1fd8b17104bb5d34d4c374a0c13c80705c5cff2c4620beae926a91441bf06a0f06efeeff829695cc08afe24ee1b754af49d268f373654fdcb0460df8c3d42c1540a8e18cd3e804029ddc899aa346f824791ea9472c43f2b573" },
+  { id: 15, name: 'Magneta', thumbImgUrl: "https://ww.namu.la/s/fa1edbe8b56b8e01b5580c29cdb23ee484af89cdfb954e237539cf1479327208eccde008666813eccf5dc1f663bb7ca9852f5837be0527ecc1713d79598eee0f94aa44ab56591c0a321bb43537ef507381468664f666c2387a3771948ca9e5a393293a682222c919e8eb8f548cd0d967" },
+  { id: 16, name: 'RubberMan', thumbImgUrl: "https://ww.namu.la/s/4f8bb0ebf4b8b55b6e7c0b35a08090e24bbd57bd8e763b5de96a09578d28c0c308ae1fd9f32b846d93b5a4043088d8480bb9f8cf126596b97f869dff35c67849d16ed838aafca36691abb3f88661d81a216f4c84e9db5a57d943af605291d88078a9116934169d069dff53280dc77ff0" },
+  { id: 17, name: 'Dynama', thumbImgUrl: "https://w.namu.la/s/99db00fabb73d8e638b7b82739e31a947350dccd6deb88355a5199d4f928ada8ff7578a649dbc653162edd4a7455a2fb1adfcf229dc33b796c75341252e67d293a6ef7ea6294f9e23a870d576970728bf521b97987b0c3feed52073d0e0d6e8f6a78cadddbb892aef9ab8e2d2bb02667" },
+  { id: 18, name: 'Dr IQ', thumbImgUrl: "https://w.namu.la/s/abfb8eb3ccc890dd5af54ba9bd771b4e8bda86844ef82c79e42d2532a3f9432dd522a543d7af3c4c30113b7f62925ea5efdae6190f31ea4a9444fbfab7628b25fe5cae412d5a2ad08cc4891387667aba07f3c53ec18e92377169890febae6253495ffba5c8982013124fe6cf74a2579c" },
+  { id: 19, name: 'Magma', thumbImgUrl: "https://ww.namu.la/s/9e24c3cff35e5184d378a1a39e32fb0aad1e37456a87b035c6ec8f34394513ba185e5384f8c521d9503531122f50e3ec054b81394d3cff13ff9aed0c3d8d19553249623054f0e2c27db0f11e999cf5cbe55ed578176dd2a2b6983299c1f1aae91dba79d28d9f1c0d87b8c977eb95de9b" },
+  { id: 20, name: 'Tornado', thumbImgUrl: "https://ww.namu.la/s/5c9d43ea485ef438f03b25755113606cc5955477c932738d0156a4204d6f9fb9d87f126fb5943d4c3232f7ad2096a031ca60bc319cda723a9c0a4c89d777f10345df8631dbccb315b3cd33e0ca453ff7b7c276ae9cb216107f0a7b0d6c19c12b38fe4981916ffe3cd8a853885d5e9ce9" }
 ];
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at http://angular.io/license
-*/

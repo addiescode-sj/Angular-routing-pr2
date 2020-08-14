@@ -11,14 +11,7 @@ import { ComposeMessageComponent } from './compose-message/compose-message.compo
 import { AppRoutingModule } from './app-routing.module';
 import { HeroesModule } from './heroes/heroes.module';
 import { AuthModule } from './auth/auth.module';
-
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatTabsModule } from '@angular/material/tabs';
-
-
-
+import { MaterialModule } from './material';
 
 @NgModule({
   imports: [
@@ -28,10 +21,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     HeroesModule,
     AuthModule,
     AppRoutingModule,
-    MatInputModule,
-    MatFormFieldModule,
-    MatToolbarModule,
-    MatTabsModule
+    MaterialModule
   ],
   declarations: [
     AppComponent,
