@@ -1,17 +1,19 @@
-<h3>Contact Crisis Center</h3>
-<div *ngIf="details">
-  {{ details }}
-</div>
-<div>
-  <div>
-    <label>Message: </label>
+<section>
+  <h3>Contact Crisis Center</h3>
+  <div *ngIf="details">
+    {{ details }}
   </div>
-  <mat-form-field class="leave-detail">
-    <mat-label>Leave a detail</mat-label>
-    <textarea matInput placeholder="Ex. please save us from..." [(ngModel)]="message" [disabled]="sending"></textarea>
-  </mat-form-field>
-</div>
-<p *ngIf="!sending">
-  <button mat-stroked-button (click)="send()" color="primary">Send</button>
-  <button mat-stroked-button (click)="cancel()" color="primary">Cancel</button>
-</p>
+  <div>
+    <div>
+      <label>Message: </label>
+    </div>
+    <mat-form-field class="leave-detail">
+      <mat-label>Leave a detail</mat-label>
+      <textarea matInput placeholder="Ex. please save us from..." [(ngModel)]="message" [disabled]="sending"></textarea>
+    </mat-form-field>
+  </div>
+  <p *ngIf="!sending">
+    <button mat-stroked-button (click)="send()" color="primary">Send</button>
+    <button mat-stroked-button (click)="cancel()" color="primary">Cancel</button>
+  </p>
+</section>
