@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { Router } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -13,6 +12,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { HeroesModule } from './heroes/heroes.module';
 import { AuthModule } from './auth/auth.module';
 
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTabsModule } from '@angular/material/tabs';
+
+
+
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -21,6 +28,10 @@ import { AuthModule } from './auth/auth.module';
     HeroesModule,
     AuthModule,
     AppRoutingModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatToolbarModule,
+    MatTabsModule
   ],
   declarations: [
     AppComponent,

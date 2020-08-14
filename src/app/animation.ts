@@ -3,6 +3,9 @@ import {
   transition, animate, style, query
 } from '@angular/animations';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 
 // 라우팅할 때 사용하는 애니메이션
 export const slideInAnimation =

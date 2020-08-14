@@ -5,47 +5,57 @@ import {
   RouterStateSnapshot,
   CanActivateChild,
   NavigationExtras,
-  UrlTree
+  CanLoad, Route
 } from '@angular/router';
 import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthGuard implements CanActivate, CanActivateChild {
+export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
   constructor(private authService: AuthService, private router: Router) { }
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): true | UrlTree {
-    let url: string = state.url;
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+    const url: string = state.url;
 
     return this.checkLogin(url);
   }
 
-  canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): true | UrlTree {
+  canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     return this.canActivate(route, state);
   }
 
-  checkLogin(url: string): true | UrlTree {
+  canLoad(route: Route): boolean {
+    const url = `/${route.path}`;
+
+    return this.checkLogin(url);
+  }
+
+  checkLogin(url: string): boolean {
     if (this.authService.isLoggedIn) { return true; }
 
-    // 리다이렉트할 URL을 저장해 둡니다.
+    // Store the attempted URL for redirecting
     this.authService.redirectUrl = url;
 
-    // 더미 세션 ID를 생성합니다.
-    let sessionId = 123456789;
+    // Create a dummy session id
+    const sessionId = 123456789;
 
-    // 전역 쿼리 파라미터와 프래그먼트를 NavigationExtras 객체타입으로 전달합니다.
-    let navigationExtras: NavigationExtras = {
-      queryParams: { 'session_id': sessionId },
+    // Set our navigation extras object
+    // that contains our global query params and fragment
+    const navigationExtras: NavigationExtras = {
+      queryParams: { session_id: sessionId },
       fragment: 'anchor'
     };
 
-    // 로그인 페이지로 이동하면서 인자를 함께 전달합니다.
-    return this.router.createUrlTree(['/login'], navigationExtras);
-  }
-
-  canLoad(route: Route): boolean {
-    let url = `/${route.path}`;
-    return this.checkLogin(url);
+    // Navigate to the login page with extras
+    this.router.navigate(['/login'], navigationExtras);
+    return false;
   }
 }
+
+
+/*
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+*/
