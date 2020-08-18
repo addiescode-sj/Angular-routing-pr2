@@ -1,9 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
-import { Hero } from '../hero';
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { HeroService } from '../hero.service';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-hero-detail',
@@ -11,8 +8,8 @@ import { Observable } from 'rxjs';
   styleUrls: ['./hero-detail.component.scss'],
 })
 export class HeroDetailComponent implements OnInit {
-
-  @Input() hero$: Observable<Hero>;
+  // min: 검색해보니 따로 app-hero-detail을 상위 컴포넌트에서 렌더하는게 아니던데, Input으로 해놓은 이유가 따로 있을까요?
+  hero$ = null;
 
   constructor(
     private route: ActivatedRoute,
@@ -21,14 +18,19 @@ export class HeroDetailComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.hero$ = this.route.paramMap.pipe(
-      switchMap((params: ParamMap) =>
-        this.service.getHero(Number(params.get('id'))))
+    // min: path param이 추가로 바뀌지 않는거같아 ActivatedRoute snapshot으로 받아서 썼어요.
+    this.hero$ = this.service.getHero(
+      Number(this.route.snapshot.paramMap.get('id'))
     );
   }
 
-  gotoHeroes(hero: Hero) {
-    let heroId = hero ? hero.id : null;
-    this.router.navigate(['/superheroes', { id: heroId, foo: 'foo' }]);
-  }
+  // min: 아래 함수 호출 부분이 없던데 따로 추가되는 기능인가요?
+  // gotoHeroes(hero: Hero) {
+  //   this.router.navigate([
+  //     '/superheroes',
+  //     {
+  //       ...(hero && { id: hero.id }),
+  //     },
+  //   ]);
+  // }
 }
