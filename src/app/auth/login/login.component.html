@@ -1,7 +1,7 @@
 <h2>LOGIN</h2>
 <p>{{ getMessgae() }}</p>
 <form (submit)="handleSubmit($event)">
-  <button mat-flat-button color="primary" type="submit" *ngIf="!isLoggedIn">
+  <button mat-flat-button color="primary" type="submit">
     {{ isLoggedIn ? "Logout" : "Login" }}
   </button>
 </form>
