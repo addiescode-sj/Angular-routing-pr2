@@ -12,10 +12,14 @@ const adminRoutes: Routes = [
   {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     // min: 라우팅 겹쳐서 뺐어요
 >>>>>>> a4799c43c87361924e19a191b029663d445bd366
     path: '',
+=======
+    path: 'admin',
+>>>>>>> parent of e1d5e36... modified redirection
 =======
     path: 'admin',
 >>>>>>> parent of e1d5e36... modified redirection
