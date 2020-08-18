@@ -21,7 +21,8 @@ export class CrisisDetailResolverService implements Resolve<Crisis> {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<Crisis> | Observable<never> {
-    let id = Number(route.paramMap.get('id'));
+    // let은 값이 '변경될' 변수라고 생각하는데 따로 값을 변환 해주는 경우가 없네요.. const로 바꿨습니다!
+    const id = Number(route.paramMap.get('id'));
 
     return this.cs.getCrisis(id).pipe(
       take(1),

@@ -20,9 +20,9 @@ export class CrisisService {
     return of(CRISES);
   }
 
-  getCrisis(id: number | string) {
+  getCrisis(id: number) {
     return this.getCrises().pipe(
-      map((crises) => crises.find((crisis) => crisis.id === +id))
+      map((crises) => crises.find((crisis) => crisis.id === id))
     );
   }
   // addCrisis(name: string) {

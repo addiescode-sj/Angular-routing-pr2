@@ -32,26 +32,32 @@ export class CrisisDetailComponent implements OnInit {
   }
 
   save() {
-    this.crisis.name = this.editName;
-    this.gotoCrises();
+    this.dialogService
+      .confirm('Discard changes?')
+      .subscribe((result) => {
+        if (this.crisis.name !== this.editName && result) {
+          this.crisis.name = this.editName;
+        }
+        this.gotoCrises();
+      })
+      .unsubscribe();
   }
 
+  // min: canDeactive를 쓰고 confirm을 넣은거같은데, 데이터가 바뀌는 시점이 애매하네요. 저는 취소 눌렀을 때, 바뀐 경우에 물어보는게 더 자연스러운 쓰임 같아요
   canDeactivate(): Observable<boolean> | boolean {
-    // 위기 목록이 없거나 변경되지 않았으면 `true`를 바로 반환합니다.
-    if (!this.crisis || this.crisis.name === this.editName) {
-      return true;
+    if (this.crisis.name !== this.editName) {
+      return this.dialogService.confirm('It is changed! Do you wanna cancel?');
     }
-    // 내용이 변경된 경우에는 사용자에게 물어보는 팝업을 띄웁니다.
-    // 그리고 사용자가 응답한 값을 Observable 타입으로 반환합니다.
-    return this.dialogService.confirm('Discard changes?');
+
+    return true;
   }
 
   gotoCrises() {
-    let crisisId = this.crisis ? this.crisis.id : null;
     // Pass along the crisis id if available
     // so that the CrisisListComponent can select that crisis.
     // Add a totally useless `foo` parameter for kicks.
     // 상대주소를 사용해서 목록 화면으로 돌아갑니다.
-    this.router.navigate(['../', { id: crisisId }], { relativeTo: this.route });
+    // min: path에 object를 넣으면 뒤에 값이 붙어서 뺏어요. 일부러 넣으신거면 왜 넣으신지 설명해 주실 수 있으실까요?
+    this.router.navigate(['../'], { relativeTo: this.route });
   }
 }
