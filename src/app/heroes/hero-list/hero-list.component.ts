@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
 export class HeroListComponent implements OnInit {
   heroes$: Observable<Hero[]>;
   selectedId: number;
-  displayedColumns: string[] = ['id', 'name', 'button'];
+  displayedColumns = ['id', 'name', 'button'];
 
   //heroes: Hero[];
 

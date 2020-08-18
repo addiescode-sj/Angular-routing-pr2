@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HeroService } from '../hero.service';
+import { Observable } from 'rxjs';
+import { Hero } from '../hero';
 
 @Component({
   selector: 'app-hero-detail',
@@ -9,7 +11,7 @@ import { HeroService } from '../hero.service';
 })
 export class HeroDetailComponent implements OnInit {
   // min: 검색해보니 따로 app-hero-detail을 상위 컴포넌트에서 렌더하는게 아니던데, Input으로 해놓은 이유가 따로 있을까요?
-  hero$ = null;
+  hero$: Observable<Hero>;
 
   constructor(
     private route: ActivatedRoute,
