@@ -10,7 +10,8 @@ import { AuthGuard } from '../auth/auth.guard';
 
 const adminRoutes: Routes = [
   {
-    path: 'admin',
+    // min: 라우팅 겹쳐서 뺐어요
+    path: '',
     component: AdminComponent,
     canActivate: [AuthGuard],
     children: [
@@ -20,23 +21,18 @@ const adminRoutes: Routes = [
         children: [
           { path: 'crises', component: ManageCrisesComponent },
           { path: 'heroes', component: ManageHeroesComponent },
-          { path: '', component: AdminDashboardComponent }
-        ]
-      }
-    ]
-  }
+          { path: '', component: AdminDashboardComponent },
+        ],
+      },
+    ],
+  },
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forChild(adminRoutes)
-  ],
-  exports: [
-    RouterModule
-  ]
+  imports: [RouterModule.forChild(adminRoutes)],
+  exports: [RouterModule],
 })
-export class AdminRoutingModule { }
-
+export class AdminRoutingModule {}
 
 /*
 Copyright Google LLC. All Rights Reserved.
