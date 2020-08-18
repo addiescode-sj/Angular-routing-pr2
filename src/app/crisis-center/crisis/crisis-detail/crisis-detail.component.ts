@@ -8,7 +8,7 @@ import { DialogService } from '../../../dialog.service';
 @Component({
   selector: 'app-crisis-detail',
   templateUrl: './crisis-detail.component.html',
-  styleUrls: ['./crisis-detail.component.scss']
+  styleUrls: ['./crisis-detail.component.scss'],
 })
 export class CrisisDetailComponent implements OnInit {
   crisis: Crisis;
@@ -18,14 +18,13 @@ export class CrisisDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     public dialogService: DialogService
-  ) { }
+  ) {}
 
   ngOnInit() {
-    this.route.data
-      .subscribe((data: { crisis: Crisis }) => {
-        this.editName = data.crisis.name;
-        this.crisis = data.crisis;
-      });
+    this.route.data.subscribe((data: { crisis: Crisis }) => {
+      this.editName = data.crisis.name;
+      this.crisis = data.crisis;
+    });
   }
 
   cancel() {
@@ -53,6 +52,6 @@ export class CrisisDetailComponent implements OnInit {
     // so that the CrisisListComponent can select that crisis.
     // Add a totally useless `foo` parameter for kicks.
     // 상대주소를 사용해서 목록 화면으로 돌아갑니다.
-    this.router.navigate(['../', { id: crisisId, foo: 'foo' }], { relativeTo: this.route });
+    this.router.navigate(['../', { id: crisisId }], { relativeTo: this.route });
   }
 }
