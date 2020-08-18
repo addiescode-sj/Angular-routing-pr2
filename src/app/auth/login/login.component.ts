@@ -26,7 +26,6 @@ export class LoginComponent implements OnInit {
       .subscribe((isLoggedIn = false) => (this.isLoggedIn = isLoggedIn));
   }
 
-  //펜딩 체크 위해 지연 - es5
   handleSubmit(event: Event) {
     event.preventDefault();
     try {
@@ -45,30 +44,4 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['500']);
     }
   }
-
-  //펜딩 체크 위해 지연 - es7
-
-  // pendingStateCheck() {
-  //   const redirect = this.authService.login();
-  //   this.router.navigate([redirect]);
-  //   return new Promise((resolve, reject) => {
-  //     resolve(this.isPending = false)
-  //   });
-  // }
-
-  // async handleSubmit(event: Event) {
-  //   event.preventDefault();
-  //   try {
-  //     if (!this.isLoggedIn) {
-  //       this.isPending = true;
-  //       const resultOfPendingState = await this.pendingStateCheck();
-  //       console.log(resultOfPendingState, '@@');
-  //       // this.isPending = resultOfPendingState;
-  //     } else {
-  //       this.authService.logout();
-  //     }
-  //   } catch {
-  //     this.router.navigate(['500']);
-  //   };
-  // }
 }

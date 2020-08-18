@@ -16,7 +16,7 @@ export class CrisisListComponent implements OnInit {
   selectedId: number;
   displayedColumns: string[] = ['id', 'name'];
 
-  constructor(private service: CrisisService, private route: ActivatedRoute) {}
+  constructor(private service: CrisisService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.crises$ = this.service.getCrises();
