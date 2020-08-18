@@ -1,8 +1,7 @@
 <h3>ADMIN</h3>
 <nav>
-  <a mat-flat-button color="primary" routerLink="./" routerLinkActive="active"
-    [routerLinkActiveOptions]="{ exact: true }">Dashboard</a>
-  <a mat-flat-button color="primary" routerLink="./crises" routerLinkActive="active">Manage Crises</a>
-  <a mat-flat-button color="primary" routerLink="./heroes" routerLinkActive="active">Manage Heroes</a>
+  <a routerLink="./" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Dashboard</a>
+  <a routerLink="./crises" routerLinkActive="active">Manage Crises</a>
+  <a routerLink="./heroes" routerLinkActive="active">Manage Heroes</a>
 </nav>
 <router-outlet></router-outlet>
