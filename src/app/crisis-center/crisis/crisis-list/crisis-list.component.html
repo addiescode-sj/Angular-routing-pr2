@@ -1,9 +1,15 @@
-<ul class="crises">
-  <li *ngFor="let crisis of crises$ | async" [class.selected]="crisis.id === selectedId">
-    <a [routerLink]="[crisis.id]">
-      <span class="badge">{{ crisis.id }}</span>{{ crisis.name }}
-    </a>
-  </li>
-</ul>
-
+<article>
+  <table mat-table [dataSource]="crises$" class="mat-elevation-z8">
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+      <mat-cell *matCellDef="let crisis">{{ crisis.id }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let crisis">{{ crisis.name }}</mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </table>
+</article>
 <router-outlet></router-outlet>

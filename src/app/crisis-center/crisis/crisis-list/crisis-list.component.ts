@@ -14,6 +14,7 @@ import { switchMap } from 'rxjs/operators';
 export class CrisisListComponent implements OnInit {
   crises$: Observable<Crisis[]>;
   selectedId: number;
+  displayedColumns: string[] = ['id', 'name'];
 
   constructor(
     private service: CrisisService,

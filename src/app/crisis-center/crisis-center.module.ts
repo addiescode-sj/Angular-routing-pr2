@@ -9,12 +9,14 @@ import { CrisisCenterComponent } from './crisis-center/crisis-center.component';
 import { CrisisDetailComponent } from './crisis/crisis-detail/crisis-detail.component';
 
 import { CrisisCenterRoutingModule } from './crisis-center-routing.module';
+import { MaterialModule } from '../material/material.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    CrisisCenterRoutingModule
+    CrisisCenterRoutingModule,
+    MaterialModule
   ],
   declarations: [
     CrisisCenterComponent,
