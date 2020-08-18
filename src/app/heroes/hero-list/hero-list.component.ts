@@ -9,22 +9,16 @@ import { switchMap } from 'rxjs/operators';
 @Component({
   selector: 'app-hero-list',
   templateUrl: './hero-list.component.html',
-  styleUrls: ['./hero-list.component.scss']
+  styleUrls: ['./hero-list.component.scss'],
 })
-
 export class HeroListComponent implements OnInit {
-
   heroes$: Observable<Hero[]>;
   selectedId: number;
   displayedColumns: string[] = ['id', 'name', 'button'];
 
-
   //heroes: Hero[];
 
-  constructor(
-    private service: HeroService,
-    private route: ActivatedRoute
-  ) { }
+  constructor(private service: HeroService, private route: ActivatedRoute) {}
 
   ngOnInit() {
     // this.getHeroes();
