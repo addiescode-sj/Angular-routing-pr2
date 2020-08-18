@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { async } from '@angular/core/testing';
 
@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
   isLoggedIn = false;
   isPending = false;
 
-  constructor(public authService: AuthService, public router: Router) {}
+  constructor(public authService: AuthService, public router: Router) { }
 
   getMessgae() {
     return this.isPending
@@ -34,10 +34,11 @@ export class LoginComponent implements OnInit {
         this.isPending = true;
         // pending 상태 체크를 위해 이벤트 루프 지연
         setTimeout(() => {
-          const redirect = this.authService.login();
-          this.router.navigate([redirect]);
+          this.authService.login();
           this.isPending = false;
         }, 1000);
+        const redirectUrl = '/admin';
+        this.router.navigate([redirectUrl]);
       } else {
         this.authService.logout();
       }
