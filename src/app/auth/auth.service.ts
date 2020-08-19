@@ -14,6 +14,7 @@ export class AuthService {
 
   login(redirect = '/admin'): string {
     this._isLoggedIn.next(true);
+    this.redirectUrl = redirect;
     // auth & premission check ...
     return redirect;
   }

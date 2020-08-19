@@ -16,16 +16,9 @@ export class HeroListComponent implements OnInit {
 
   //heroes: Hero[];
 
-  constructor(private service: HeroService, private route: ActivatedRoute) {}
+  constructor(private service: HeroService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.heroes$ = this.service.getHeroes();
-    // min: 아래 소스의도를 모르겠어요... 코멘트 달아주세요
-    // this.heroes$ = this.route.paramMap.pipe(
-    //   switchMap((params) => {
-    //     //+는 string형으로 받은 id를 number로 변환시켜준다.
-    //     return this.service.getHeroes();
-    //   })
-    // );
   }
 }

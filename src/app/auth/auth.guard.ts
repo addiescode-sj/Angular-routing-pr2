@@ -15,6 +15,8 @@ import { AuthService } from './auth.service';
 export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
   constructor(private authService: AuthService, private router: Router) { }
 
+  isLoggedinVal = false;
+
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     const url: string = state.url;
 
@@ -32,7 +34,10 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
   }
 
   checkLogin(url: string): boolean {
-    if (this.authService.isLoggedIn) { return true; }
+
+    this.authService.getIsLoggedIn().subscribe(isLoggedIn => this.isLoggedinVal = isLoggedIn);
+
+    if (this.isLoggedinVal) { return true; }
 
     // Store the attempted URL for redirecting
     this.authService.redirectUrl = url;
