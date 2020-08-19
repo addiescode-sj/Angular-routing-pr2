@@ -6,7 +6,11 @@
     </ng-container>
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-      <mat-cell *matCellDef="let crisis">{{ crisis.name }}</mat-cell>
+      <mat-cell *matCellDef="let crisis">
+        <mat-nav-list>
+          <mat-list-item [routerLink]="[crisis.id]">{{ crisis.name }}</mat-list-item>
+        </mat-nav-list>
+      </mat-cell>
     </ng-container>
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>

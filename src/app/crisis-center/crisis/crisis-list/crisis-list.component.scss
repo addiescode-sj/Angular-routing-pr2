@@ -1,5 +1,9 @@
 article {
   table {
     width: 80%;
+    margin-bottom: 40px;
+    mat-nav-list {
+      cursor: pointer;
+    }
   }
 }
